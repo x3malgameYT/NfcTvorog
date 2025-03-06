@@ -24,18 +24,32 @@
             font-size: 1.5rem;
             cursor: pointer;
         }
+        button:disabled {
+            cursor: not-allowed;
+            background-color: grey;
+        }
     </style>
 </head>
 <body>
     <h1>ТЫ ПРИЛОЖИЛ МЕТКУ...</h1>
-    <button onclick="playSound()">НАЖМИ ЧТОБЫ УСЛЫШАТЬ</button>
+    <button id="playButton" onclick="playSound()">НАЖМИ ЧТОБЫ УСЛЫШАТЬ</button>
 
     <script>
         function playSound() {
-            const audio = new Audio('https://x3malgameyt.github.io/NfcTvorog/AudioT/tvorog.mp3'); // Убедись, что ссылка правильная
+            // Отключаем кнопку
+            const button = document.getElementById('playButton');
+            button.disabled = true;
+
+            // Воспроизведение звука
+            const audio = new Audio('https://x3malgameyt.github.io/NfcTvorog/AudioT.mp3');
             audio.play().catch(err => {
                 alert('Ошибка воспроизведения звука: ' + err.message);
             });
+
+            // Разблокируем кнопку через 3 секунды
+            setTimeout(() => {
+                button.disabled = false;
+            }, 3000); // 3000 миллисекунд = 3 секунды
         }
     </script>
 </body>
