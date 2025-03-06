@@ -1,1 +1,42 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Секретный мем</title>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            flex-direction: column;
+        }
+        h1 {
+            font-size: 3rem;
+            text-align: center;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>ТЫ ПРИЛОЖИЛ МЕТКУ...</h1>
+    <button onclick="playSound()">НАЖМИ ЧТОБЫ УСЛЫШАТЬ</button>
 
+    <script>
+        function playSound() {
+            const audio = new Audio('https://x3malgameyt.github.io/nfc-ston/audio/tvorog.mp3'); // Убедись, что ссылка правильная
+            audio.play().catch(err => {
+                alert('Ошибка воспроизведения звука: ' + err.message);
+            });
+        }
+    </script>
+</body>
+</html>
