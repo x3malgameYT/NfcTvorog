@@ -24,10 +24,6 @@
             font-size: 1.5rem;
             cursor: pointer;
         }
-        button:disabled {
-            cursor: not-allowed;
-            background-color: grey;
-        }
     </style>
 </head>
 <body>
@@ -36,16 +32,17 @@
 
     <script>
         function playSound() {
+            // Заблокируем кнопку, чтобы предотвратить повторные нажатия
             const button = document.querySelector("button");
             button.disabled = true;
 
-            // Установим задержку 1 секунда перед воспроизведением
+            // Установим задержку (например, 1 секунда)
             setTimeout(() => {
-                console.log('Воспроизведение стона через 1 секунду');
-                const audio = new Audio('https://x3malgameyt.github.io/nfc-ston/audio/ston_9zi2M1N.mp3'); // Путь к стону
+                console.log('Воспроизведение звука через 1 секунду');
+                const audio = new Audio('https://x3malgameyt.github.io/NfcTvorog/AudioT/tvorog.mp3');
                 audio.play()
                     .then(() => {
-                        console.log('Стоны воспроизведены');
+                        console.log('Звук воспроизведен');
                     })
                     .catch(err => {
                         console.log('Ошибка воспроизведения звука: ' + err.message);
@@ -55,7 +52,7 @@
                 // Разблокируем кнопку через 3 секунды после воспроизведения
                 setTimeout(() => {
                     button.disabled = false;
-                }, 3000); // Разблокировка через 3 секунды
+                }, 3000);
             }, 1000); // Задержка 1000 миллисекунд (1 секунда)
         }
     </script>
