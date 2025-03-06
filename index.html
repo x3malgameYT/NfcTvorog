@@ -36,19 +36,28 @@
 
     <script>
         function playSound() {
-            // Отключаем кнопку
             const button = document.getElementById('playButton');
+            
+            // Проверим, работает ли кнопка (и заблокируем её)
             button.disabled = true;
+            console.log('Кнопка заблокирована');
 
             // Воспроизведение звука
             const audio = new Audio('https://x3malgameyt.github.io/NfcTvorog/AudioT.mp3');
-            audio.play().catch(err => {
-                alert('Ошибка воспроизведения звука: ' + err.message);
-            });
+            
+            audio.play()
+                .then(() => {
+                    console.log('Звук воспроизведен успешно');
+                })
+                .catch(err => {
+                    alert('Ошибка воспроизведения звука: ' + err.message);
+                    console.log('Ошибка воспроизведения звука: ', err);
+                });
 
             // Разблокируем кнопку через 3 секунды
             setTimeout(() => {
                 button.disabled = false;
+                console.log('Кнопка разблокирована');
             }, 3000); // 3000 миллисекунд = 3 секунды
         }
     </script>
